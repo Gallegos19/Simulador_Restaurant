@@ -49,11 +49,9 @@ public class Cliente implements Runnable {
                     wait(); // Espera a que su pedido sea entregado
                 }
             }
-
-            System.out.println("Cliente " + id + " recibió su pedido y se va del restaurante.");
-            Thread.sleep(1000); // Simula el tiempo antes de salir
-            mesaMonitor.liberarMesa(mesaId);
-            System.out.println("Cliente " + id + " deja la mesa " + mesaId);
+            System.out.println("Cliente " + id + " recibió su pedido");
+            Thread.sleep(3000); // Simula el tiempo antes de salir
+            mesaMonitor.liberarMesaCliente(mesaId, this);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }

@@ -44,14 +44,20 @@ public class MesaMonitor {
                 return i;
             }
         }
-        return -1; // Nunca debería llegar aquí
+        return -1;
     }
 
-    public synchronized void liberarMesa(int idMesa) {
+    public synchronized void liberarMesa(int idMesa) throws InterruptedException {
+        Thread.sleep(3000);
         mesas[idMesa] = false; // Libera la mesa
         atendiendoMesas[idMesa] = false; // Marca que la mesa ya no está siendo atendida
-        clientesEnMesas.remove(idMesa); // Elimina la asociación cliente-mesa
-        System.out.println("Mesa " + idMesa + " liberada.");
+        System.out.println("Mesa " + idMesa + " limpia para su uso.");
+        notifyAll();
+    }
+
+    public synchronized void liberarMesaCliente(int idMesa, Cliente cliente) {
+        clientesEnMesas.remove(idMesa);
+        System.out.println("Mesa " + idMesa + " liberada por el cliente" + cliente.getId());
         notifyAll();
     }
 
