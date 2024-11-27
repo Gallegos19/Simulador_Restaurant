@@ -1,32 +1,32 @@
 package org.example.core.services;
 
-import org.example.core.contracts.IMeseroService;
 import org.example.infrastructure.concurrency.CocinaMonitor;
 import org.example.infrastructure.concurrency.MesaMonitor;
 
-public class MeseroService implements IMeseroService {
+public class MeseroService implements Runnable {
+    private final int id;
     private final MesaMonitor mesaMonitor;
     private final CocinaMonitor cocinaMonitor;
 
-    public MeseroService(MesaMonitor mesaMonitor, CocinaMonitor cocinaMonitor) {
+    public MeseroService(int id, MesaMonitor mesaMonitor, CocinaMonitor cocinaMonitor) {
+        this.id = id;
         this.mesaMonitor = mesaMonitor;
         this.cocinaMonitor = cocinaMonitor;
     }
 
     @Override
-    public void atenderMesa(int idMesa) {
-        System.out.println("Mesero atendiendo la mesa " + idMesa);
-        cocinaMonitor.nuevoPedido(idMesa); // Envía el pedido a la cocina
-    }
+    public void run() {
+        try {
+            while (true) {
+                int mesaId = mesaMonitor.getMesaOcupada(); // Verifica mesas ocupadas
+                System.out.println("Mesero " + id + " toma pedido de la mesa " + mesaId);
 
-    @Override
-    public void entregarPedido(int idMesa) {
-        System.out.println("Mesero entregó la comida a la mesa " + idMesa);
-    }
+                cocinaMonitor.nuevoPedido(mesaId); // Enviar pedido a la cocina
 
-    @Override
-    public void limpiarMesa(int idMesa) {
-        System.out.println("Mesero limpiando la mesa " + idMesa);
-        mesaMonitor.liberarMesa(idMesa);
+                Thread.sleep(1000); // Simula tiempo de atención
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 }

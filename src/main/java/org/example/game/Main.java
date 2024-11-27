@@ -1,58 +1,59 @@
 package org.example.game;
 
 import org.example.config.Constants;
+import org.example.core.contracts.IMesaMonitor;
+import org.example.core.services.ChefService;
+import org.example.core.services.ClienteService;
+import org.example.core.services.MeseroService;
+import org.example.core.services.RecepcionistaService;
 import org.example.entities.Cliente;
 import org.example.infrastructure.concurrency.CocinaMonitor;
 import org.example.infrastructure.concurrency.MesaMonitor;
-import org.example.core.services.ClienteService;
-import org.example.core.services.ChefService;
-import org.example.core.services.MeseroService;
-import org.example.core.services.RecepcionistaService;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        // Inicialización de configuración
+    public static void main(String[] args) {
         Constants config = new Constants();
+
+        // Monitores
+        MesaMonitor mesaMonitor = new MesaMonitor(config.getNumMesas());
+
         CocinaMonitor cocinaMonitor = new CocinaMonitor();
 
-        // Inicialización de monitores y servicios
-        MesaMonitor mesaMonitor = new MesaMonitor(config.getMesasDisponibles());
+        // Pool de hilos
+        ExecutorService executor = Executors.newCachedThreadPool();
 
-        ClienteService clienteService = new ClienteService(mesaMonitor);
-        RecepcionistaService recepcionistaService = new RecepcionistaService(mesaMonitor);
-        ChefService chefService = new ChefService(cocinaMonitor);
-        MeseroService meseroService = new MeseroService(mesaMonitor, cocinaMonitor);
+        // Crear y ejecutar recepcionista
+        RecepcionistaService recepcionista = new RecepcionistaService(mesaMonitor);
+        executor.submit(recepcionista);
 
-        // Crear clientes basados en las constantes
-        List<Cliente> clientes = new ArrayList<>();
-        for (int i = 1; i <= config.getNumClientes(); i++) {
-            clientes.add(new Cliente(i));
+        // Crear y ejecutar clientes
+        for (int i = 0; i < config.getNumClientes(); i++) {
+            Cliente cliente = new Cliente(i, mesaMonitor, recepcionista);
+            executor.submit(cliente);
+            try {
+                // Simula el tiempo de llegada de clientes
+                Thread.sleep(1000); // Puedes ajustar el intervalo si es necesario
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
 
-        // Simulación
-        System.out.println("Iniciando simulación...");
-
-        for (Cliente cliente : clientes) {
-            // Clientes llegan al restaurante
-            clienteService.entrarRestaurante(cliente);
-
-            // Recepcionista busca lugar para los clientes
-            recepcionistaService.asignarMesa(cliente);
-
-            // Chef prepara una orden (simulación simple para cliente)
-            chefService.prepararOrden();
-
-            // Mesero atiende y limpia mesas
-            meseroService.atenderMesa(cliente.getId());
-            meseroService.limpiarMesa(cliente.getId());
-
-            // Cliente sale del restaurante
-            clienteService.salirRestaurante(cliente);
+        //Crear y ejecutar meseros
+        for (int i = 0; i < config.getNumMeseros(); i++) {
+            executor.submit(new MeseroService(i, mesaMonitor, cocinaMonitor));
         }
 
-        System.out.println("Simulación finalizada.");
+        // Crear y ejecutar chefs
+        for (int i = 0; i < config.getNumChefs(); i++) {
+            executor.submit(new ChefService(i, cocinaMonitor));
+        }
+
+
+
+        executor.shutdown();
+        System.out.println("Simulación en curso...");
     }
 }

@@ -1,23 +1,24 @@
 package org.example.config;
 
 public class Constants {
-    public static final int NUM_CHEFS = 1;
-    public static final int NUM_CLIENTES = 5;
-    public static final int MESAS_DISPONIBLES = 10;
-
-    public Constants() {
-        // Este constructor no hace nada, pero deja claro que se permite instanciar la clase
-    }
-
-    public int getMesasDisponibles() {
-        return MESAS_DISPONIBLES;
-    }
+    private final int numClientes = 5;
+    private final int numMesas = 2;
+    private final int numChefs = 1;
+    private final int numMeseros = 2;
 
     public int getNumClientes() {
-        return NUM_CLIENTES;
+        return numClientes;
+    }
+
+    public int getNumMesas() {
+        return numMesas;
     }
 
     public int getNumChefs() {
-        return NUM_CHEFS;
+        return numChefs;
+    }
+
+    public int getNumMeseros() {
+        return numMeseros;
     }
 }

@@ -1,19 +1,18 @@
 package org.example.entities;
 
+import org.example.core.contracts.IMesaMonitor;
+import org.example.core.contracts.ICocinaMonitor;
+
 public class Mesero {
-    private int id;
-    private String nombre;
-    private int id_mesa;
+    private final int id;
+    private final IMesaMonitor mesaMonitor;
+    private final ICocinaMonitor cocinaMonitor;
 
-    public Mesero(int id, String nombre, int id_mesa) {
+    public Mesero(int id, IMesaMonitor mesaMonitor, ICocinaMonitor cocinaMonitor) {
         this.id = id;
-        this.nombre = nombre;
-        this.id_mesa = id_mesa;
+        this.mesaMonitor = mesaMonitor;
+        this.cocinaMonitor = cocinaMonitor;
     }
 
-    public void atender() {
-        System.out.println("Mesero " + id + " está atendiendo la mesa" + id_mesa);
-    }
-    public void limpiar_mesa() {
-        System.out.println("Mesero " + id + " está limpiando la mesa" + id_mesa);    }
+
 }
