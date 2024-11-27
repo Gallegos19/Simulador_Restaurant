@@ -1,18 +1,17 @@
 package org.example.entities;
 
-import org.example.core.contracts.IMesaMonitor;
-import org.example.core.contracts.ICocinaMonitor;
-
 public class Mesero {
     private final int id;
-    private final IMesaMonitor mesaMonitor;
-    private final ICocinaMonitor cocinaMonitor;
 
-    public Mesero(int id, IMesaMonitor mesaMonitor, ICocinaMonitor cocinaMonitor) {
+    public Mesero(int id) {
         this.id = id;
-        this.mesaMonitor = mesaMonitor;
-        this.cocinaMonitor = cocinaMonitor;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void atenderMesa(int mesaId) {
+        System.out.println("Mesero " + id + " atendiendo la mesa " + mesaId);
+    }
 }

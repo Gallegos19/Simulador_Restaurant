@@ -1,17 +1,19 @@
 package org.example.game;
 
 import org.example.config.Constants;
-import org.example.core.contracts.IMesaMonitor;
 import org.example.core.services.ChefService;
-import org.example.core.services.ClienteService;
 import org.example.core.services.MeseroService;
 import org.example.core.services.RecepcionistaService;
+import org.example.entities.Chef;
 import org.example.entities.Cliente;
+import org.example.entities.Mesero;
+import org.example.entities.Recepcionista;
 import org.example.infrastructure.concurrency.CocinaMonitor;
 import org.example.infrastructure.concurrency.MesaMonitor;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -26,12 +28,24 @@ public class Main {
         ExecutorService executor = Executors.newCachedThreadPool();
 
         // Crear y ejecutar recepcionista
-        RecepcionistaService recepcionista = new RecepcionistaService(mesaMonitor);
-        executor.submit(recepcionista);
+        Recepcionista recepcionista = new Recepcionista("Itadori");
+        RecepcionistaService recepcionistaService = new RecepcionistaService(recepcionista, mesaMonitor);
+        executor.submit(recepcionistaService);
 
+        //Crear y ejecutar meseros
+        for (int i = 0; i < config.getNumMeseros(); i++) {
+            Mesero mesero = new Mesero(i);
+            executor.submit(new MeseroService(mesero, mesaMonitor, cocinaMonitor));
+        }
+
+        // Crear y ejecutar chefs
+        for (int i = 0; i < config.getNumChefs(); i++) {
+            Chef chef = new Chef(i);
+            executor.submit(new ChefService(chef, cocinaMonitor));
+        }
         // Crear y ejecutar clientes
         for (int i = 0; i < config.getNumClientes(); i++) {
-            Cliente cliente = new Cliente(i, mesaMonitor, recepcionista);
+            Cliente cliente = new Cliente(i, mesaMonitor, recepcionistaService);
             executor.submit(cliente);
             try {
                 // Simula el tiempo de llegada de clientes
@@ -41,19 +55,10 @@ public class Main {
             }
         }
 
-        //Crear y ejecutar meseros
-        for (int i = 0; i < config.getNumMeseros(); i++) {
-            executor.submit(new MeseroService(i, mesaMonitor, cocinaMonitor));
-        }
-
-        // Crear y ejecutar chefs
-        for (int i = 0; i < config.getNumChefs(); i++) {
-            executor.submit(new ChefService(i, cocinaMonitor));
-        }
 
 
 
         executor.shutdown();
-        System.out.println("Simulación en curso...");
+
     }
 }

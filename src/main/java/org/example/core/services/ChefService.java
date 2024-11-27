@@ -1,13 +1,14 @@
 package org.example.core.services;
 
+import org.example.entities.Chef;
 import org.example.infrastructure.concurrency.CocinaMonitor;
 
 public class ChefService implements Runnable {
-    private final int id;
+    private final Chef chef;
     private final CocinaMonitor cocinaMonitor;
 
-    public ChefService(int id, CocinaMonitor cocinaMonitor) {
-        this.id = id;
+    public ChefService(Chef chef, CocinaMonitor cocinaMonitor) {
+        this.chef = chef;
         this.cocinaMonitor = cocinaMonitor;
     }
 
@@ -15,11 +16,10 @@ public class ChefService implements Runnable {
     public void run() {
         try {
             while (true) {
-                int mesaId = cocinaMonitor.tomarPedido(); // Toma un pedido de la cola
-                System.out.println("Chef " + id + " está preparando el pedido de la mesa " + mesaId);
-
-                Thread.sleep(3000); // Simula tiempo de preparación
-                System.out.println("Chef " + id + " terminó el pedido de la mesa " + mesaId);
+                int idMesa = cocinaMonitor.tomarPedido(); // Toma un pedido para prepararlo
+                chef.prepararPedido(idMesa); // Simula la preparación del pedido
+                Thread.sleep(500); // Simula el tiempo de preparación
+                cocinaMonitor.pedidoListo(idMesa); // Notifica que el pedido está listo
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
