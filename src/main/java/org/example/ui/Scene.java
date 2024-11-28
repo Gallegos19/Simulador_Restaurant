@@ -1,4 +1,4 @@
 package org.example.ui;
 
-public class HUD {
+public class Scene {
 }
