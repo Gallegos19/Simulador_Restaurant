@@ -4,7 +4,7 @@ public class Constants {
     private final int numClientes = 50;
     private final int numMesas = 10;
     private final int numChefs = 2;
-    private final int numMeseros = 5;
+    private final int numMeseros = 3;
 
     public int getNumClientes() {
         return numClientes;

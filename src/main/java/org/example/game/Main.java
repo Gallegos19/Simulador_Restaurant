@@ -11,12 +11,16 @@ import org.example.entities.Recepcionista;
 import org.example.infrastructure.concurrency.CocinaMonitor;
 import org.example.infrastructure.concurrency.MesaMonitor;
 
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
 public class Main {
     public static void main(String[] args) {
+        GameScene gameScene = new GameScene();
+        gameScene.main(args);
+
         Constants config = new Constants();
 
         // Monitores
@@ -54,8 +58,6 @@ public class Main {
                 Thread.currentThread().interrupt();
             }
         }
-
-
 
 
         executor.shutdown();

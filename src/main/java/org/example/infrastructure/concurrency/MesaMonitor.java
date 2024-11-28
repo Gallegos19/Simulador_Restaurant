@@ -1,8 +1,10 @@
 package org.example.infrastructure.concurrency;
 
+import com.almasb.fxgl.dsl.FXGL;
 import org.example.core.contracts.IMesaMonitor;
 import org.example.entities.Cliente;
 import org.example.entities.Mesero;
+import org.example.game.GameScene;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -20,7 +22,8 @@ public class MesaMonitor {
     public MesaMonitor(int numMesas) {
         this.mesas = new boolean[numMesas];
         this.atendiendoMesas = new boolean[numMesas]; // Inicialmente, ninguna mesa está siendo atendida
-        this.clientesEnMesas = new HashMap<>(); // Inicialización del mapa para clientes en mesas
+        this.clientesEnMesas = new HashMap<>(); // Inicializaci&oacute;n del mapa para clientes en mesas
+
         Arrays.fill(mesas, false); // Todas las mesas están libres al inicio
         Arrays.fill(atendiendoMesas, false); // Ninguna mesa está siendo atendida
         this.colaEspera = new LinkedList<>();
@@ -29,6 +32,7 @@ public class MesaMonitor {
     public int getPosicion() {
         return posicion;
     }
+
 
     public synchronized int ocuparMesa(Cliente cliente) throws InterruptedException {
         while (!hayMesasDisponibles()) {
@@ -41,6 +45,10 @@ public class MesaMonitor {
                 notifyAll();
                 System.out.println("Mesa " + i + " ocupada por cliente " + cliente.getId());
                 posicion = i;
+                FXGL.run(() -> {
+                    GameScene.
+                    GameScene.getInstance().updateTableState(i, "ocupada");
+                });
                 return i;
             }
         }
