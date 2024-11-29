@@ -32,6 +32,7 @@ public class GameScene extends GameApplication {
     private Mesa table;
     private MesaMonitor mesaMonitor;
     private CocinaMonitor cocinaMonitor;
+    private ExecutorService executor = Executors.newCachedThreadPool();
 
 
     @Override
@@ -70,16 +71,35 @@ public class GameScene extends GameApplication {
             org.example.ui.entities.Mesero meseroUI = new org.example.ui.entities.Mesero(100 * i, 500);
             FXGL.getGameWorld().addEntity(meseroUI.getEntity());
         }
-
+        for (int i = 0; i < config.getNumMesas(); i++) {
+            // Usa coordenadas para posicionar gráficamente al mesero
+            org.example.ui.entities.Mesa mesaUI = new org.example.ui.entities.Mesa(120 * i, 400);
+            FXGL.getGameWorld().addEntity(mesaUI.getEntity());
+        }
+        for (int i = 0; i < config.getNumChefs(); i++) {
+            // Usa coordenadas para posicionar gráficamente al mesero
+            org.example.ui.entities.Cocinero chefUI = new org.example.ui.entities.Cocinero(200 * i, 600);
+            FXGL.getGameWorld().addEntity(chefUI.getEntity());
+        }
+        for (int i = 0; i < config.getNumClientes(); i++) {
+            // Usa coordenadas para posicionar gráficamente al mesero
+            org.example.ui.entities.Cliente clienteUI = new org.example.ui.entities.Cliente(200 * i, 300);
+            FXGL.getGameWorld().addEntity(clienteUI.getEntity());
+        }
         // Iniciar lógica de simulación
         startSimulation(config);
     }
 
     private void startSimulation(Constants config) {
         // Crear pool de hilos
-        ExecutorService executor = Executors.newCachedThreadPool();
 
         // Crear y ejecutar recepcionista
+//        Recepcionista recepcionista = new Recepcionista("Itadori");
+//        RecepcionistaService recepcionistaService = new RecepcionistaService(recepcionista, mesaMonitor, recepcionistaUI);
+//        executor.submit(recepcionistaService);
+
+        org.example.ui.entities.Recepcionista recepcionistaUI= new org.example.ui.entities.Recepcionista(350,650);
+        FXGL.getGameWorld().addEntity(recepcionistaUI.getEntity());
         Recepcionista recepcionista = new Recepcionista("Itadori");
         RecepcionistaService recepcionistaService = new RecepcionistaService(recepcionista, mesaMonitor);
         executor.submit(recepcionistaService);

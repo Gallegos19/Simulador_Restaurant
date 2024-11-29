@@ -5,14 +5,14 @@ import org.example.core.contracts.IMesaMonitor;
 import org.example.entities.Cliente;
 import org.example.entities.Mesero;
 import org.example.game.GameScene;
+import org.example.patterns.ClienteObserver;
+import org.example.patterns.Observador;
+import org.example.ui.entities.Mesa;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 
-public class MesaMonitor {
+public class MesaMonitor implements ClienteObserver {
+    private final List<Observador> observadores = new ArrayList<>();
     private final boolean[] mesas; // Estado de si las mesas están ocupadas
     private final boolean[] atendiendoMesas; // Estado de si las mesas están siendo atendidas
     private final Map<Integer, Cliente> clientesEnMesas; // Relación mesa -> cliente
@@ -45,10 +45,10 @@ public class MesaMonitor {
                 notifyAll();
                 System.out.println("Mesa " + i + " ocupada por cliente " + cliente.getId());
                 posicion = i;
-                FXGL.run(() -> {
-                    GameScene.
-                    GameScene.getInstance().updateTableState(i, "ocupada");
-                });
+                notificarObservadores("Mesa" + posicion + "asignada");
+//                FXGL.run(() ->
+//                    GameScene.getInstance().updateTableState(i, "ocupada");
+//                });
                 return i;
             }
         }
@@ -66,6 +66,7 @@ public class MesaMonitor {
     public synchronized void liberarMesaCliente(int idMesa, Cliente cliente) {
         clientesEnMesas.remove(idMesa);
         System.out.println("Mesa " + idMesa + " liberada por el cliente" + cliente.getId());
+        notificarObservadores("Mesa " + idMesa + " liberada.");
         notifyAll();
     }
 
@@ -103,5 +104,27 @@ public class MesaMonitor {
             }
         }
         return false;
+    }
+
+    @Override
+    public void onMesa(Cliente cliente, int id_mesa) {
+
+    }
+
+    @Override
+    public void agregarObservador(Observador o) {
+        observadores.add(o);
+    }
+
+    @Override
+    public void eliminarObservador(Observador o) {
+        observadores.remove(o);
+    }
+
+    @Override
+    public void notificarObservadores(String mensaje) {
+        for (Observador o : observadores) {
+            o.actualizar(mensaje);
+        }
     }
 }

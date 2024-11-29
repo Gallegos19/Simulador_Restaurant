@@ -4,44 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8d5cb55-499b-4109-986a-918be74d7308" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Cliente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Cocinero.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Mesa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Mesero.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Recepcionista.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Utilidades.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/spaceScene/CheckerboardFloor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/spaceScene/DiningRoom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/spaceScene/Entrance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/spaceScene/Kitchen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/spaceScene/OutsideAreas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/cliente-comiendo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/cliente-sentado.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/cliente.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/cocinero.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/mesa-sucia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/mesa-vacia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/mesero-comida.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/mesero.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/recepcionista.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/robots.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="f8d5cb55-499b-4109-986a-918be74d7308" name="Changes" comment="Estructura Inicial Proyecto">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/patterns/ClienteObserver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/patterns/Observador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-24-nov.-2024-18.37.43.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-24-nov.-2024-18.47.23.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-nov.-2024-11.49.59.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-nov.-2024-18.09.00.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/chef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Chef.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-nov.-2024-22.10.22.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-nov.-2024-22.11.48.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-nov.-2024-22.49.14.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-nov.-2024-22.50.24.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-nov.-2024-22.52.53.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-nov.-2024-22.56.48.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/config/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/config/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Cliente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/game/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/game/GameScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/game/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/infrastructure/concurrency/MesaMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/infrastructure/concurrency/MesaMonitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ui/HUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/Scene.java" afterDir="false" />
-    </list>
-    <list id="90955133-1c03-4a4d-b44e-2c393981a075" name="Changes by adrib" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/config/constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/config/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/infrastructure/concurrency/MesaMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/infrastructure/concurrency/MesaMonitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Mesa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Mesa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Recepcionista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Recepcionista.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,148 +30,102 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="main" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
         <option value="Gallegos19" />
       </list>
     </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;state&quot;: &quot;OPEN&quot;,
+      &quot;assignee&quot;: &quot;Gallegos19&quot;,
+      &quot;author&quot;: &quot;AlbertoSMC72&quot;
+    }
+  ],
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;Gallegos19&quot;
+    &quot;assignee&quot;: &quot;Gallegos19&quot;,
+    &quot;author&quot;: &quot;AlbertoSMC72&quot;
   }
 }</component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="3010686d-ba93-481c-af89-df7c9c1d0b75" />
+  </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Gallegos19/Simulador_Restaurant.git&quot;,
-    &quot;accountId&quot;: &quot;31c4a545-ae24-40e5-afd2-050891938474&quot;
+    &quot;accountId&quot;: &quot;3010686d-ba93-481c-af89-df7c9c1d0b75&quot;
   }
 }</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/org/example/infrastructure/concurrency/MesaMonitor.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="3" changelist="90955133-1c03-4a4d-b44e-2c393981a075" />
-        <range start1="5" end1="5" start2="6" end2="7" changelist="90955133-1c03-4a4d-b44e-2c393981a075" />
-        <range start1="22" end1="23" start2="24" end2="26" changelist="f8d5cb55-499b-4109-986a-918be74d7308" />
-        <range start1="31" end1="31" start2="34" end2="35" changelist="90955133-1c03-4a4d-b44e-2c393981a075" />
-        <range start1="43" end1="43" start2="47" end2="51" changelist="90955133-1c03-4a4d-b44e-2c393981a075" />
-      </ranges>
-    </file>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2pJqol9fMlRaKmF597Fz3IJ6xpl" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GameScene.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.Scene (1).executor": "Run",
-    "Application.Scene.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/alber/IdeaProjects/Simulador_Restaurant/src/main/java",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GameScene.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;grafica&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/adrib/Documents/7to Cuatri/Programacion Concurrente/Corte 3/Simulador-restaurante-master-FER/Simulador-restaurante-master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\alber\IdeaProjects\Simulador_Restaurant\src\main\java" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\alber\IdeaProjects\Simulador_Restaurant\src\main\resources\assets\textures" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.GameScene">
-    <configuration name="GameScene" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.game.GameScene" />
-      <module name="Proyecto_Simulador" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.game.Main" />
-      <module name="Proyecto_Simulador" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Scene" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.ui.Scene" />
-      <module name="Proyecto_Simulador" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.ui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.GameScene" />
-        <item itemvalue="Application.Scene" />
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
-  </component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -213,9 +146,7 @@
       <workItem from="1732579852961" duration="46494000" />
       <workItem from="1732720936065" duration="3311000" />
       <workItem from="1732724268346" duration="3099000" />
-      <workItem from="1732751460301" duration="10724000" />
-      <workItem from="1732762739221" duration="988000" />
-      <workItem from="1732763768082" duration="10806000" />
+      <workItem from="1732848890275" duration="277000" />
     </task>
     <task id="LOCAL-00001" summary="Estructura Inicial Proyecto">
       <option name="closed" value="true" />
@@ -232,11 +163,6 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="OPEN_GENERIC_TABS">
-      <map>
-        <entry key="6a83febf-d922-4bf5-8873-27c2d0b484ec" value="TOOL_WINDOW" />
-      </map>
-    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="User">
@@ -254,11 +180,6 @@
     </option>
     <option name="TAB_STATES">
       <map>
-        <entry key="6a83febf-d922-4bf5-8873-27c2d0b484ec">
-          <value>
-            <State />
-          </value>
-        </entry>
         <entry key="MAIN">
           <value>
             <State>
@@ -267,7 +188,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="origin/grafica" />
                       </list>
                     </value>
                   </entry>

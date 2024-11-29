@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
 public class Main {
     public static void main(String[] args) {
         GameScene gameScene = new GameScene();
-        gameScene.main(args);
+        //gameScene.main(args);
 
         Constants config = new Constants();
 

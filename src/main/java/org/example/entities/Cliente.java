@@ -2,18 +2,21 @@ package org.example.entities;
 
 import org.example.core.services.RecepcionistaService;
 import org.example.infrastructure.concurrency.MesaMonitor;
+import org.example.patterns.Observador;
 
-public class Cliente implements Runnable {
+public class Cliente implements Observador, Runnable{
     private final int id;
     private final MesaMonitor mesaMonitor;
     private final RecepcionistaService recepcionistaService;
     private int mesaId;
     private boolean pedidoEntregado = false; // Estado del pedido
+    private int mesaAsignada = -1;
 
     public Cliente(int id, MesaMonitor mesaMonitor, RecepcionistaService recepcionistaService) {
         this.id = id;
         this.mesaMonitor = mesaMonitor;
         this.recepcionistaService = recepcionistaService;
+        this.mesaMonitor.agregarObservador((Observador) this);
     }
 
     public synchronized void setMesaId(int mesaId) {
@@ -30,6 +33,26 @@ public class Cliente implements Runnable {
         return id;
     }
 
+//    @Override
+//    public void actualizar(String mensaje) {
+//        System.out.println("Cliente " + id + " recibió notificación: " + mensaje);
+//        if (mensaje.contains("asignada")) {
+//            mesaAsignada = Integer.parseInt(mensaje.split(" ")[1]);
+//        }
+//    }
+
+    @Override
+    public void actualizar(String mensaje) {
+        synchronized (this) {
+            System.out.println("Cliente " + id + " recibió notificación: " + mensaje);
+            if (mensaje.contains("asignada")) {
+                int mesa = Integer.parseInt(mensaje.split(" ")[1]);
+                if (mesaId == -1) { // Solo toma la primera mesa asignada
+                    setMesaId(mesa);
+                }
+            }
+        }
+    }
     @Override
     public void run() {
         try {

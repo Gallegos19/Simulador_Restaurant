@@ -2,11 +2,19 @@ package org.example.ui.entities;
 
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.dsl.FXGL;
+import com.sun.source.doctree.EntityTree;
 import org.example.ui.spaceScene.DiningRoom;
 
 import javax.sound.midi.MidiMessage;
 
 public class Mesa {
+    public enum EntityType {
+        MESA, // Puedes agregar otros tipos si es necesario
+        MESERO,
+        COCINA,
+        // Otros tipos...
+    }
+
     private Entity entity;
 
     public Mesa(double x, double y) {
@@ -21,13 +29,6 @@ public class Mesa {
 
 
     public void cambiarEstado(int idMesa,String estado) {
-        Entity mesa = FXGL.getGameWorld().getEntitiesByComponent(DiningRoom.class)
-                .stream()
-                .filter(e -> e.getProperties().getInt("idMesa") == idMesa)
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("Mesa no encontrada"));
-
-        mesa.getProperties().setValue("estado", estado);
         entity.getViewComponent().clearChildren();
 
         switch (estado) {
