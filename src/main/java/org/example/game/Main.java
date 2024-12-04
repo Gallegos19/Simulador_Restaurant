@@ -18,6 +18,7 @@ import java.util.concurrent.Executors;
 
 public class Main {
     public static void main(String[] args) {
+
         GameScene gameScene = new GameScene();
         gameScene.main(args);
 
@@ -32,15 +33,15 @@ public class Main {
         ExecutorService executor = Executors.newCachedThreadPool();
 
         // Crear y ejecutar recepcionista
-        Recepcionista recepcionista = new Recepcionista("Itadori");
-        RecepcionistaService recepcionistaService = new RecepcionistaService(recepcionista, mesaMonitor);
-        executor.submit(recepcionistaService);
+//        Recepcionista recepcionista = new Recepcionista("Itadori");
+//        RecepcionistaService recepcionistaService = new RecepcionistaService(recepcionista, mesaMonitor);
+//        executor.submit(recepcionistaService);
 
         //Crear y ejecutar meseros
-        for (int i = 0; i < config.getNumMeseros(); i++) {
-            Mesero mesero = new Mesero(i);
-            executor.submit(new MeseroService(mesero, mesaMonitor, cocinaMonitor));
-        }
+//        for (int i = 0; i < config.getNumMeseros(); i++) {
+//            Mesero mesero = new Mesero(i);
+//            executor.submit(new MeseroService(mesero, mesaMonitor, cocinaMonitor));
+//        }
 
         // Crear y ejecutar chefs
         for (int i = 0; i < config.getNumChefs(); i++) {
@@ -48,16 +49,16 @@ public class Main {
             executor.submit(new ChefService(chef, cocinaMonitor));
         }
         // Crear y ejecutar clientes
-        for (int i = 0; i < config.getNumClientes(); i++) {
-            Cliente cliente = new Cliente(i, mesaMonitor, recepcionistaService);
-            executor.submit(cliente);
-            try {
-                // Simula el tiempo de llegada de clientes
-                Thread.sleep(1000); // Puedes ajustar el intervalo si es necesario
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-        }
+//        for (int i = 0; i < config.getNumClientes(); i++) {
+//            Cliente cliente = new Cliente(i, mesaMonitor, recepcionistaService);
+//            executor.submit(cliente);
+//            try {
+//                // Simula el tiempo de llegada de clientes
+//                Thread.sleep(1000); // Puedes ajustar el intervalo si es necesario
+//            } catch (InterruptedException e) {
+//                Thread.currentThread().interrupt();
+//            }
+//        }
 
 
         executor.shutdown();

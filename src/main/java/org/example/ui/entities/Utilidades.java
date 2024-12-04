@@ -18,10 +18,15 @@ public class Utilidades {
                 double finalIncrementoX = incrementoX * (i + 1);
                 double finalIncrementoY = incrementoY * (i + 1);
 
-                Platform.runLater(() -> entidad.setPosition(
-                        inicio.getX() + finalIncrementoX,
-                        inicio.getY() + finalIncrementoY
-                ));
+                Platform.runLater(() -> {
+                    // Mueve solo esta entidad
+                    if (entidad.isActive()) {
+                        entidad.setPosition(
+                                inicio.getX() + finalIncrementoX,
+                                inicio.getY() + finalIncrementoY
+                        );
+                    }
+                });
 
                 try {
                     Thread.sleep((long) (1000 / 60.0));

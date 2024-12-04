@@ -10,7 +10,7 @@ public class Mesero {
         // Mesero con estado inicial
         entity = FXGL.entityBuilder()
                 .at(x, y)
-                .view(FXGL.getAssetLoader().loadTexture("mesero.png", 80, 80))
+                .view(FXGL.getAssetLoader().loadTexture("mesero-comida.png", 80, 80))
                 .build();
         FXGL.getGameWorld().addEntity(entity);
     }
@@ -27,6 +27,7 @@ public class Mesero {
                 break;
         }
     }
+
 
     public Entity getEntity() {
         return entity;

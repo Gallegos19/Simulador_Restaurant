@@ -4,44 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8d5cb55-499b-4109-986a-918be74d7308" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Cliente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Cocinero.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Mesa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Mesero.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Recepcionista.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Utilidades.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/spaceScene/CheckerboardFloor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/spaceScene/DiningRoom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/spaceScene/Entrance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/spaceScene/Kitchen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/spaceScene/OutsideAreas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/cliente-comiendo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/cliente-sentado.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/cliente.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/cocinero.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/mesa-sucia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/mesa-vacia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/mesero-comida.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/mesero.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/recepcionista.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/robots.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="f8d5cb55-499b-4109-986a-918be74d7308" name="Changes" comment="Estructura Inicial Proyecto">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/core/controllers/ChefController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/core/controllers/ClienteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/core/controllers/MesaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/core/controllers/MeseroController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/core/controllers/RecepcionistaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/core/utils/EntityManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-24-nov.-2024-18.37.43.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-24-nov.-2024-18.47.23.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-nov.-2024-11.49.59.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-nov.-2024-18.09.00.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/chef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Chef.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-nov.-2024-22.10.22.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-nov.-2024-22.11.48.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-nov.-2024-22.49.14.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-nov.-2024-22.50.24.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-nov.-2024-22.52.53.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-nov.-2024-22.56.48.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-nov.-2024-22.57.35.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-nov.-2024-22.57.47.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-nov.-2024-23.01.32.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-nov.-2024-23.09.10.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/config/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/config/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/core/services/ChefService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/core/services/ChefService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/core/services/MeseroService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/core/services/MeseroService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/core/services/RecepcionistaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/core/services/RecepcionistaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Mesero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Mesero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Recepcionista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Recepcionista.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/game/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/game/GameScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/game/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/infrastructure/concurrency/CocinaMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/infrastructure/concurrency/CocinaMonitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/infrastructure/concurrency/MesaMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/infrastructure/concurrency/MesaMonitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ui/HUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Mesa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Mesa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Mesero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Mesero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Utilidades.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ui/entities/Utilidades.java" afterDir="false" />
     </list>
-    <list id="90955133-1c03-4a4d-b44e-2c393981a075" name="Changes by adrib" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/config/constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/config/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/infrastructure/concurrency/MesaMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/infrastructure/concurrency/MesaMonitor.java" afterDir="false" />
+    <list id="90955133-1c03-4a4d-b44e-2c393981a075" name="Changes by adrib" comment="" />
+    <list id="4e554826-50d7-4394-a796-8b4fc3945213" name="Changes by alber" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/game/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/game/GameScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +60,11 @@
         <option value="Gallegos19" />
       </list>
     </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -70,24 +73,37 @@
     &quot;assignee&quot;: &quot;Gallegos19&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Gallegos19/Simulador_Restaurant.git&quot;,
-    &quot;accountId&quot;: &quot;31c4a545-ae24-40e5-afd2-050891938474&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Gallegos19/Simulador_Restaurant.git",
+    "accountId": "3010686d-ba93-481c-af89-df7c9c1d0b75"
   }
-}</component>
+}]]></component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/org/example/infrastructure/concurrency/MesaMonitor.java">
+    <file path="$PROJECT_DIR$/src/main/java/org/example/game/GameScene.java">
       <ranges>
-        <range start1="2" end1="2" start2="2" end2="3" changelist="90955133-1c03-4a4d-b44e-2c393981a075" />
-        <range start1="5" end1="5" start2="6" end2="7" changelist="90955133-1c03-4a4d-b44e-2c393981a075" />
-        <range start1="22" end1="23" start2="24" end2="26" changelist="f8d5cb55-499b-4109-986a-918be74d7308" />
-        <range start1="31" end1="31" start2="34" end2="35" changelist="90955133-1c03-4a4d-b44e-2c393981a075" />
-        <range start1="43" end1="43" start2="47" end2="51" changelist="90955133-1c03-4a4d-b44e-2c393981a075" />
+        <range start1="6" end1="6" start2="6" end2="7" changelist="f8d5cb55-499b-4109-986a-918be74d7308" />
+        <range start1="8" end1="9" start2="9" end2="9" changelist="f8d5cb55-499b-4109-986a-918be74d7308" />
+        <range start1="14" end1="14" start2="14" end2="15" changelist="f8d5cb55-499b-4109-986a-918be74d7308" />
+        <range start1="22" end1="22" start2="23" end2="24" changelist="f8d5cb55-499b-4109-986a-918be74d7308" />
+        <range start1="23" end1="24" start2="25" end2="28" changelist="f8d5cb55-499b-4109-986a-918be74d7308" />
+        <range start1="34" end1="34" start2="38" end2="41" changelist="f8d5cb55-499b-4109-986a-918be74d7308" />
+        <range start1="45" end1="45" start2="52" end2="53" changelist="f8d5cb55-499b-4109-986a-918be74d7308" />
+        <range start1="46" end1="46" start2="54" end2="55" changelist="f8d5cb55-499b-4109-986a-918be74d7308" />
+        <range start1="63" end1="63" start2="72" end2="91" changelist="4e554826-50d7-4394-a796-8b4fc3945213" />
+        <range start1="65" end1="75" start2="93" end2="93" changelist="f8d5cb55-499b-4109-986a-918be74d7308" />
+        <range start1="77" end1="80" start2="95" end2="108" changelist="f8d5cb55-499b-4109-986a-918be74d7308" />
+        <range start1="81" end1="85" start2="109" end2="110" changelist="f8d5cb55-499b-4109-986a-918be74d7308" />
+        <range start1="86" end1="90" start2="111" end2="119" changelist="f8d5cb55-499b-4109-986a-918be74d7308" />
+        <range start1="92" end1="96" start2="121" end2="144" changelist="f8d5cb55-499b-4109-986a-918be74d7308" />
+        <range start1="97" end1="97" start2="145" end2="146" changelist="f8d5cb55-499b-4109-986a-918be74d7308" />
+        <range start1="98" end1="108" start2="147" end2="178" changelist="f8d5cb55-499b-4109-986a-918be74d7308" />
+        <range start1="110" end1="111" start2="180" end2="181" changelist="f8d5cb55-499b-4109-986a-918be74d7308" />
+        <range start1="113" end1="113" start2="183" end2="186" changelist="f8d5cb55-499b-4109-986a-918be74d7308" />
       </ranges>
     </file>
   </component>
@@ -95,7 +111,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -118,7 +134,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "grafica",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/alber/IdeaProjects/Simulador_Restaurant/src/main/java",
@@ -146,7 +162,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.GameScene">
-    <configuration name="GameScene" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="GameScene" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.game.GameScene" />
       <module name="Proyecto_Simulador" />
       <extension name="coverage">
@@ -187,7 +203,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GameScene" />
         <item itemvalue="Application.Scene" />
         <item itemvalue="Application.Main" />
       </list>
@@ -216,6 +231,7 @@
       <workItem from="1732751460301" duration="10724000" />
       <workItem from="1732762739221" duration="988000" />
       <workItem from="1732763768082" duration="10806000" />
+      <workItem from="1732848884349" duration="102018000" />
     </task>
     <task id="LOCAL-00001" summary="Estructura Inicial Proyecto">
       <option name="closed" value="true" />
@@ -282,6 +298,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Estructura Inicial Proyecto" />
     <option name="LAST_COMMIT_MESSAGE" value="Estructura Inicial Proyecto" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalStateException" package="java.lang" />
+          <option name="timeStamp" value="22" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

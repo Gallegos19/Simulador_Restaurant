@@ -1,89 +1,97 @@
 package org.example.infrastructure.concurrency;
 
-import com.almasb.fxgl.dsl.FXGL;
-import org.example.core.contracts.IMesaMonitor;
-import org.example.entities.Cliente;
-import org.example.entities.Mesero;
-import org.example.game.GameScene;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 
+import org.example.core.controllers.MesaController;
+import org.example.entities.Cliente;
+import org.example.entities.Mesero;
+
 public class MesaMonitor {
     private final boolean[] mesas; // Estado de si las mesas están ocupadas
     private final boolean[] atendiendoMesas; // Estado de si las mesas están siendo atendidas
     private final Map<Integer, Cliente> clientesEnMesas; // Relación mesa -> cliente
-    private int posicion;
     private final Queue<Integer> colaEspera;
 
     public MesaMonitor(int numMesas) {
         this.mesas = new boolean[numMesas];
         this.atendiendoMesas = new boolean[numMesas]; // Inicialmente, ninguna mesa está siendo atendida
-        this.clientesEnMesas = new HashMap<>(); // Inicializaci&oacute;n del mapa para clientes en mesas
+        this.clientesEnMesas = new HashMap<>(); // Inicialización del mapa para clientes en mesas
 
         Arrays.fill(mesas, false); // Todas las mesas están libres al inicio
         Arrays.fill(atendiendoMesas, false); // Ninguna mesa está siendo atendida
         this.colaEspera = new LinkedList<>();
     }
 
-    public int getPosicion() {
-        return posicion;
-    }
-
-
-    public synchronized int ocuparMesa(Cliente cliente) throws InterruptedException {
+    public synchronized int ocuparMesa(Cliente cliente, MesaController mesaController) throws InterruptedException {
         while (!hayMesasDisponibles()) {
+            System.out.println("No hay mesas disponibles. Cliente " + cliente.getId() + " espera.");
             wait();
         }
+
         for (int i = 0; i < mesas.length; i++) {
             if (!mesas[i]) {
-                mesas[i] = true; // Ocupa la mesa
-                clientesEnMesas.put(i, cliente); // Asocia la mesa con el cliente
-                notifyAll();
+                mesas[i] = true;
+                atendiendoMesas[i] = false;
+                clientesEnMesas.put(i, cliente);
                 System.out.println("Mesa " + i + " ocupada por cliente " + cliente.getId());
-                posicion = i;
-                FXGL.run(() -> {
-                    GameScene.
-                    GameScene.getInstance().updateTableState(i, "ocupada");
-                });
+                notifyAll(); // Notifica a otros hilos que una mesa ha cambiado de estado
                 return i;
             }
         }
+
         return -1;
     }
 
-    public synchronized void liberarMesa(int idMesa) throws InterruptedException {
-        Thread.sleep(3000);
-        mesas[idMesa] = false; // Libera la mesa
-        atendiendoMesas[idMesa] = false; // Marca que la mesa ya no está siendo atendida
-        System.out.println("Mesa " + idMesa + " limpia para su uso.");
-        notifyAll();
+    public synchronized void liberarMesa(int idMesa, MesaController mesaController) throws InterruptedException {
+        System.out.println("Liberando mesa " + idMesa + "...");
+        Cliente cliente = clientesEnMesas.get(idMesa);
+
+        if (cliente != null) {
+            synchronized (cliente) {
+                cliente.recibirPedido();
+            }
+        }
+
+        Thread.sleep(3000); // Simulación de tiempo para liberar la mesa
+        mesas[idMesa] = false;
+        atendiendoMesas[idMesa] = false;
+        clientesEnMesas.remove(idMesa);
+        System.out.println("Mesa " + idMesa + " ahora está libre.");
+        mesaController.cambiarEstadoMesa(idMesa, "vacia");
+        notifyAll(); // Notifica a otros hilos que una mesa está disponible
     }
 
-    public synchronized void liberarMesaCliente(int idMesa, Cliente cliente) {
+    public synchronized void liberarMesaCliente(int idMesa, Cliente cliente, MesaController mesaController) throws InterruptedException {
         clientesEnMesas.remove(idMesa);
-        System.out.println("Mesa " + idMesa + " liberada por el cliente" + cliente.getId());
+        //mesaController.cambiarEstadoMesa(idMesa, "comiendo");
+        Thread.sleep(5000); // Simulación de tiempo para que el cliente termine
+        //System.out.println("Mesa " + idMesa + " liberada por el cliente " + cliente.getId());
+        //mesaController.cambiarEstadoMesa(idMesa, "sucia");
         notifyAll();
     }
 
     public synchronized Cliente getClienteEnMesa(int idMesa) {
-        return clientesEnMesas.get(idMesa); // Retorna el cliente asociado a la mesa
+        return clientesEnMesas.get(idMesa);
     }
 
     public synchronized int getMesaOcupada(Mesero mesero) throws InterruptedException {
         while (!hayMesasOcupadas()) {
-            wait(); // Espera si no hay mesas ocupadas
+            System.out.println("No hay mesas ocupadas. Mesero " + mesero.getId() + " espera.");
+            wait(); // Espera hasta que haya mesas ocupadas
         }
+
         for (int i = 0; i < mesas.length; i++) {
-            if (mesas[i] && !atendiendoMesas[i]) { // Si la mesa está ocupada y no está siendo atendida
-                atendiendoMesas[i] = true; // Marca la mesa como siendo atendida
-                System.out.println("Mesero " + mesero.getId() + " detecta que la mesa " + i + " está ocupada.");
-                return i; // Retorna el ID de la mesa ocupada
+            if (mesas[i] && !atendiendoMesas[i]) {
+                atendiendoMesas[i] = true;
+                System.out.println("Mesero " + mesero.getId() + " atiende la mesa " + i);
+                return i;
             }
         }
+
         return -1; // Nunca debería llegar aquí
     }
 
@@ -98,7 +106,7 @@ public class MesaMonitor {
 
     private boolean hayMesasOcupadas() {
         for (int i = 0; i < mesas.length; i++) {
-            if (mesas[i] && !atendiendoMesas[i]) { // Busca mesas ocupadas que no estén siendo atendidas
+            if (mesas[i] && !atendiendoMesas[i]) {
                 return true;
             }
         }
