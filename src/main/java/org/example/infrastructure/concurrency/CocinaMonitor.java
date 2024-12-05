@@ -1,5 +1,7 @@
 package org.example.infrastructure.concurrency;
 
+import org.example.entities.Mesero;
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -23,6 +25,7 @@ public class CocinaMonitor {
      */
     public synchronized int tomarPedido() throws InterruptedException {
         while (colaPedidos.isEmpty()) {
+            System.out.println("No hay pedidos en cola");
             wait(); // Espera si no hay pedidos pendientes
         }
         int idMesa = colaPedidos.poll(); // Saca un pedido de la cola
@@ -42,7 +45,7 @@ public class CocinaMonitor {
     /**
      * Permite a un mesero retirar un pedido listo.
      */
-    public synchronized int retirarPedido() throws InterruptedException {
+    public synchronized int retirarPedido(Mesero mesero) throws InterruptedException {
         while (pedidosListos.isEmpty()) {
             wait(); // Espera si no hay pedidos listos
         }
@@ -50,6 +53,13 @@ public class CocinaMonitor {
         int idMesa = pedidosListos.keySet().iterator().next();
         pedidosListos.remove(idMesa); // Retira el pedido del mapa
         System.out.println("Mesero retiró el pedido de la mesa " + idMesa + ".");
+        notifyAll();
         return idMesa;
+    }
+    public synchronized void esperarPedido() throws InterruptedException {
+        while (pedidosListos.isEmpty()) {
+            System.out.println("Mesero esperando en la cocina por un pedido...");
+            wait(); // Mesero espera hasta que haya un nuevo pedido
+        }
     }
 }
