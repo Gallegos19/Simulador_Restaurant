@@ -3,6 +3,9 @@ package org.example.game;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.entity.Entity;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import org.example.config.Constants;
 import org.example.core.controllers.*;
 import org.example.core.services.ChefService;
@@ -22,6 +25,8 @@ import org.example.ui.entities.Mesa;
 import org.example.ui.entities.Mesero;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.loopBGM;
@@ -39,6 +44,7 @@ public class GameScene extends GameApplication {
     private org.example.entities.Mesero mesero;
     private MesaController mesaController;
     private ExecutorService executor = newFixedThreadPool(5);
+    private List<Entity> estaciones;
 
 
     @Override
@@ -52,6 +58,7 @@ public class GameScene extends GameApplication {
     protected void initGame() {
         this.startSoundtrack();
         Constants config = new Constants();
+        createStage(400, 50); // Escenario
         mesaController = new MesaController();
         mesaMonitor = new MesaMonitor(config.getNumMesas());
         cocinaMonitor = new CocinaMonitor();
@@ -76,31 +83,21 @@ public class GameScene extends GameApplication {
 
     private void crearClientesDinamicamente(Constants config, Recepcionista recepcionista) {
         int numClientes = config.getNumClientes();
-        double startX = 350; // Coordenada X inicial para los clientes
-        double startY = 600; // Coordenada Y inicial para los clientes
+        double startX = 300; // Coordenada X inicial para los clientes
+        double startY = 700; // Coordenada Y inicial para los clientes
         double spacingX = 50; // Espaciado entre clientes en X
 
-        // Crear lista de clientes y sus controladores
         for (int i = 0; i < numClientes; i++) {
-            // Crear vista del cliente
             org.example.ui.entities.Cliente clienteView = new org.example.ui.entities.Cliente(startX + (i * spacingX), startY);
-            //cliente.setClientEntity(clienteView.getEntity());
-            // Crear lógica del cliente
             Cliente cliente = new Cliente(i + 1, mesaMonitor, recepcionista, mesaController, clienteView);
-
             clienteView.getEntity().getProperties().setValue("clienteId", cliente.getId());
-
-            // Añadir la entidad del cliente al mundo
             FXGL.getGameWorld().addEntity(clienteView.getEntity());
 
-            // Crear y enlazar el controlador del cliente
             ClienteController clienteController = new ClienteController(cliente, clienteView, mesaController);
 
-            // Agregar a un ejecutor para correr en paralelo
             executor.submit(clienteController::run);
         }
 
-        // Imprimir para confirmar que todos los clientes se han creado
         System.out.println(numClientes + " clientes creados e inicializados.");
     }
 
@@ -163,7 +160,36 @@ public class GameScene extends GameApplication {
     }
 
     private void startSoundtrack(){
-        loopBGM("LeFestin.mp3");
+        loopBGM("lefestin.mp3");
+    }
+    private void createStage(double x, double y) {
+        // Crear la base del escenario
+        Rectangle stageBase = new Rectangle(200, 100, Color.DARKVIOLET);
+        stageBase.setStroke(Color.BLACK); // Agregar borde para mayor visibilidad
+
+        // Cargar la imagen del escenario
+        var stageImage = FXGL.getAssetLoader().loadTexture("robots.png");
+        stageImage.setFitWidth(180);
+        stageImage.setFitHeight(90);
+
+        // Construir la entidad y agregarla al mundo
+        FXGL.entityBuilder()
+                .at(x, y)
+                .view(stageBase)       // Agregar la base como vista
+                .view(stageImage)      // Agregar la imagen encima de la base
+                .zIndex(10)            // Establecer un índice Z alto para asegurarse de que esté visible
+                .buildAndAttach();     // Construir y adjuntar la entidad al mundo
+
+        System.out.println("Escenario creado en posición: (" + x + ", " + y + ")");
+    }
+
+    private Entity createKitchenStation(double x, double y) {
+        Entity station = FXGL.entityBuilder()
+                .at(x, y)
+                .view(new Rectangle(40, 30, Color.RED))
+                .build();
+        FXGL.getGameWorld().addEntity(station); // Asegúrate de agregarlo al mundo
+        return station;
     }
 
     public static void main(String[] args) {

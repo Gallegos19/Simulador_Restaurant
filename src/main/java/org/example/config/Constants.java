@@ -1,7 +1,7 @@
 package org.example.config;
 
 public class Constants {
-    private final int numClientes = 10;
+    private final int numClientes = 5;
     private final int numMesas = 10;
     private final int numChefs = 2;
     private final int numMeseros = 4;
