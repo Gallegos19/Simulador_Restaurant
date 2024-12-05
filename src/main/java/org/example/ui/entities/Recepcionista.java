@@ -18,4 +18,13 @@ public class Recepcionista {
     public Entity getEntity() {
         return entity;
     }
+
+    public void mostrarEstado(String estado) {
+        FXGL.getNotificationService().pushNotification("Itadori: " + estado);
+    }
+
+    // Método para simular movimiento (opcional)
+    public void mover(double x, double y) {
+        entity.setPosition(x, y);
+    }
 }
